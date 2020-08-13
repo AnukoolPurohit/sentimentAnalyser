@@ -1,0 +1,4 @@
+{
+    "python.linting.enabled": true,
+    "python.pythonPath": "/home/anukoolpurohit/anaconda3/envs/Torch10cuda/bin/python"
+}
