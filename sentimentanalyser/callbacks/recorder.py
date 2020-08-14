@@ -7,7 +7,6 @@ class Recorder(Callback):
         self.train_losses = []
         self.valid_losses = []
         self.lrs          = [[] for _ in self.opt.param_groups]
-        self.mom = []
         return
     
     def after_batch(self):
@@ -18,7 +17,6 @@ class Recorder(Callback):
         self.train_losses.append(self.loss.detach().cpu())
         for pg, lr in zip(self.opt.param_groups, self.lrs):
             lr.append(pg['lr'])
-            self.mom.append(pg['betas'])
         return
     
     def plot(self, skip_last=0, pgid=-1):
