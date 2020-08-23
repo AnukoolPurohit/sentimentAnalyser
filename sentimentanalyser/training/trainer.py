@@ -97,3 +97,7 @@ class Trainer():
         for cb in sorted(self.cbs, key=lambda x: x._order):
             res = cb(cb_name) and res
         return res
+    
+    @property
+    def pred(self):
+        return self.preds

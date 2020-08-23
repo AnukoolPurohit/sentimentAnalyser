@@ -69,7 +69,7 @@ class RecorderCustom(Callback):
         losses = [loss.item() for loss in self.train_losses]
         n      = len(losses) - skip_last
         plt.xscale('log')
-        plt.plot(lrs[:n], losses[:n])
+        plt.plot(self.lrs[:n], losses[:n])
         return
     
     def plot_loss(self, skip_last=[0,0]):

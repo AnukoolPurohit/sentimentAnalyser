@@ -7,6 +7,11 @@ class Callback():
     def set_trainer(self, trainer):
         self.trainer = trainer
         return
+    
+    def set_runner(self, run):
+        self.trainer = run
+        return
+        
     def __getattr__(self, k):
         return getattr(self.trainer, k)
     
