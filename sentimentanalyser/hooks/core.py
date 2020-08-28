@@ -1,7 +1,8 @@
+from functools import partial
 from sentimentanalyser.data.core import ListContainer
 
 
-class Hook():
+class Hook:
     def __init__(self, m, f):
         self.hook = m.register_forward_hook(partial(f, self))
     

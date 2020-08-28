@@ -6,7 +6,7 @@ import time
 import torch
 
 
-class AvgStats():
+class AvgStats:
     def __init__(self, metrics, in_train):
         self.metrics, self.in_train = listify(metrics), in_train
     
@@ -31,7 +31,7 @@ class AvgStats():
         bs = trainer.xb.shape[0]
         self.tot_loss += trainer.loss * bs
         self.count += bs
-        for i,metric in enumerate(self.metrics):
+        for i, metric in enumerate(self.metrics):
             self.tot_mets[i] += metric(trainer.preds, trainer.yb) * bs
 
 

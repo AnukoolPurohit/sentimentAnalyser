@@ -2,7 +2,6 @@ from sentimentanalyser.utils.data import listify
 from sentimentanalyser.callbacks.core import Callback
 
 
-
 class ParamScheduler(Callback):
     def __init__(self, pname, sched_funcs):
         self.pname, self.sched_funcs = pname, sched_funcs
@@ -17,7 +16,9 @@ class ParamScheduler(Callback):
             pg[self.pname] = sched_func(self.n_epochs/self.epochs)
     
     def begin_batch(self):
-        if self.in_train: self.set_params()
+        if self.in_train:
+            self.set_params()
+
 
 class ParamSchedulerCustom(Callback):
     def __init__(self, pname, sched_funcs):
@@ -30,5 +31,5 @@ class ParamSchedulerCustom(Callback):
         if len(fs) == 1:
             fs = fs*len(self.opt.param_groups)
         pos = self.n_epochs/self.epochs
-        for f,h in zip(fs, self.opt.hypers):
-            h[self.pname] = f(pos) 
+        for f, h in zip(fs, self.opt.hypers):
+            h[self.pname] = f(pos)

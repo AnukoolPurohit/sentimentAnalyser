@@ -1,8 +1,8 @@
 from sentimentanalyser.utils.data import listify
 
 
+class ListContainer:
 
-class ListContainer():
     def __init__(self, items):
         self.items = listify(items)
     
@@ -12,7 +12,7 @@ class ListContainer():
         except TypeError:
             if isinstance(idx[0], bool):
                 assert len(idx) == len(self)
-                return [v for v,m in zip(self.items, idx) if m]
+                return [v for v, m in zip(self.items, idx) if m]
             return [self.items[i] for i in idx]
     
     def __len__(self):
@@ -35,7 +35,7 @@ class ListContainer():
         return res
 
     def __repr__(self):
-        if self.items == []:
+        if not self.items:
             ret = f"{self.__class__.__name__} ({len(self)} items)\n{self.items}"
         elif isinstance(self.items[0], list):
             disp_lst = self.display_lists(self.items[:10])
