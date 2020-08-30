@@ -1,5 +1,5 @@
 import re
-from sentimentanalyser.utils.callbacks import camel2snake
+from .utils import camel2snake
 
 
 class Callback:

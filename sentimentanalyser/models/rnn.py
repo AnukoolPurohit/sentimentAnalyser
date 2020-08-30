@@ -236,8 +236,8 @@ class AttnAWDModel(nn.Module):
 
     def forward(self, xb):
         seq_lens, mask = get_info(xb, self.pad_idx)
-
-        embedded = self.dropout(self.embedding(xb))
+        embedded = self.embedding(xb)
+        embedded = self.dropout(embedded)
         packed_i = nn.utils.rnn.pack_padded_sequence(embedded, seq_lens,
                                                      batch_first=True)
 

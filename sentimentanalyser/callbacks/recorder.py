@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from sentimentanalyser.callbacks.core import Callback
+from .core import Callback
 
 
 class Recorder(Callback):

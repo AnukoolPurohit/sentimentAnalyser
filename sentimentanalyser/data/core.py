@@ -1,4 +1,4 @@
-from sentimentanalyser.utils.data import listify
+from ..utils.data import listify
 
 
 class ListContainer:

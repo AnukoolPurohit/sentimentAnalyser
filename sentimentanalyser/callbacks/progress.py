@@ -1,6 +1,6 @@
 from fastprogress import master_bar, progress_bar
-from sentimentanalyser.callbacks.core import Callback
 from functools import partial
+from .core import Callback
 
 
 class ProgressCallback(Callback):

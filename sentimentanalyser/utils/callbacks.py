@@ -1,15 +1,7 @@
-import re
 import math
 import torch
 from functools import partial
 from sentimentanalyser.utils.data import listify
-
-
-def camel2snake(name):
-    _camel_re1 = re.compile('(.)([A-Z][a-z]+)')
-    _camel_re2 = re.compile('([a-z0-9])([A-Z])')
-    s1 = re.sub(_camel_re1, r'\1_\2', name)
-    return re.sub(_camel_re2, r'\1_\2',s1).lower()
 
 
 def annealer(f):
@@ -43,11 +35,16 @@ def combine_scheds(pcts, scheds):
     pcts = torch.tensor([0] + listify(pcts))
     assert torch.all(pcts >= 0)
     pcts = torch.cumsum(pcts, 0)
+
     def _inner(pos):
-        idx = torch.nonzero((pos >= pcts), as_tuple=False).max()
+        idx = (pos >= pcts).nonzero().max()
         actual_pos = (pos - pcts[idx]) / (pcts[idx+1] - pcts[idx])
         return scheds[idx](actual_pos)
     return _inner
+
+
+def cos_1cycle_anneal(start, high, end):
+    return [sched_cos(start, high), sched_cos(high, end)]
 
 
 def create_phases(phases):
