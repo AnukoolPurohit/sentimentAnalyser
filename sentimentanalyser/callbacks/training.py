@@ -89,3 +89,26 @@ class GradientClipping(Callback):
     def after_backward(self):
         if self.clip:
             nn.utils.clip_grad_norm_(self.trainer.model.parameters(), self.clip)
+
+
+class RNNCustomTrainer(Callback):
+    def __init__(self, α, β):
+        self.α = α
+        self.β = β
+
+    def after_pred(self):
+        self.out, self.raw_out = self.preds[1], self.preds[2]
+        self.trainer.preds = self.trainer.preds[0]
+
+    def after_loss(self):
+        if self.α != 0.:
+            self.trainer.loss += self.α * self.out[-1].float().pow(2).mean()
+
+        if self.β != 0.:
+            h = self.raw_out[-1]
+            if len(h) > 1:
+                self.trainer.loss += self.β * (h[:, 1:] - h[:, :-1]).float().pow(2).mean()
+
+    def begin_epoch(self):
+        if hasattr(self.dl.dataset, "batchify"):
+            self.dl.dataset.batchify()
