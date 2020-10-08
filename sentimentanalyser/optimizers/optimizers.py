@@ -1,8 +1,8 @@
 from functools import partial
 from ..utils.data import listify
-from ..optimizers.core import StatefulOptimizer
-from ..optimizers.steppers import adam_step, weight_decay
-from ..optimizers.stats import AverageGrad, AverageSqrGrad, StepCount
+from .core import StatefulOptimizer
+from .steppers import adam_step, weight_decay
+from .stats import AverageGrad, AverageSqrGrad, StepCount
 
 
 def adam_opt(xtra_step=None, **kwargs):

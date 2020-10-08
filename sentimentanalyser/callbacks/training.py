@@ -1,5 +1,5 @@
-from sentimentanalyser.callbacks.core import Callback
-from sentimentanalyser.utils.exceptions import CancelTrainException
+from .core import Callback
+from ..utils.exceptions import CancelTrainException
 from torch import nn
 
 

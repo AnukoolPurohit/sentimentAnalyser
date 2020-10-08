@@ -1,5 +1,5 @@
-from sentimentanalyser.utils.data import compose, listify
-from sentimentanalyser.utils.optimizers import maybe_update, get_defaults
+from ..utils.data import compose, listify
+from .utils import maybe_update, get_defaults
 
 
 class Optimizer:

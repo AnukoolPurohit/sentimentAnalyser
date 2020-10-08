@@ -1,5 +1,5 @@
-from sentimentanalyser.utils.data import listify
-from sentimentanalyser.callbacks.core import Callback
+from ..utils.data import listify
+from .core import Callback
 
 
 class ParamScheduler(Callback):

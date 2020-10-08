@@ -1,4 +1,4 @@
-from sentimentanalyser.utils.optimizers import debias
+from .utils import debias
 
 
 def sgd_step(p, lr, **kwargs):

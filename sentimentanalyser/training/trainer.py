@@ -1,9 +1,9 @@
 import torch
-from sentimentanalyser.callbacks.training import TrainEvalCallback
-from sentimentanalyser.utils.exceptions import CancelTrainException
-from sentimentanalyser.utils.exceptions import CancelEpochException
-from sentimentanalyser.utils.exceptions import CancelBatchException
-from sentimentanalyser.utils.data import listify
+from ..callbacks.training import TrainEvalCallback
+from ..utils.exceptions import CancelTrainException
+from ..utils.exceptions import CancelEpochException
+from ..utils.exceptions import CancelBatchException
+from ..utils.data import listify
 
 
 class Trainer:

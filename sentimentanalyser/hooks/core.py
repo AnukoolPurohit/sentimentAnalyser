@@ -1,5 +1,5 @@
 from functools import partial
-from sentimentanalyser.data.core import ListContainer
+from ..data.core import ListContainer
 
 
 class Hook:

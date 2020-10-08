@@ -1,7 +1,7 @@
-from sentimentanalyser.utils.data import listify, compose, read_text_file, Path, random_splitter
-from sentimentanalyser.utils.data import pad_collate
-from sentimentanalyser.data.samplers import SortishSampler, SortSampler
-from sentimentanalyser.data.core import ListContainer
+from ..utils.data import listify, compose, read_text_file, Path, random_splitter
+from ..utils.data import pad_collate
+from .samplers import SortishSampler, SortSampler
+from .core import ListContainer
 from torch.utils.data import DataLoader
 from torch import tensor
 from typing import Any
